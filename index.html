@@ -34,6 +34,35 @@
     </table>
     <button id="reset" value="reset">Clear</button>
 
+    <script>
+       var resetButton = document.getElementById("reset");
+       var outputField = document.getElementById("total-output");
+       var expenses = Array.from(document.getElementsByClassName("count-me"));
+      
+       function addExpenses() {
+          var total = 0;
+          expenses.forEach(function(expense) {
+            if (isNaN(expense.value)){
+               alert("Please enter a numerical value!");
+            }
+           
+            else if(parseInt(expense.value)){
+               total += parseInt(expense.value);
+            }
+         });
+         outputField.style.border = "2px solid #ff0000";
+         outputField.textContent = total;
+        }
+        
+        resetButton.onclick = function() {
+           expenses.forEach(function(expense) {
+              expense.value = "";
+           });
+           outputField.style.border = "none";
+           outputField.textContent = "";
+        }
+    </script>
+
   
 </body>
 </html>
